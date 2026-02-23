@@ -5,10 +5,20 @@ using UnityEngine.InputSystem;
 
 public class AbilityController : MonoBehaviour
 {
-    public List<AbilityBase> abilities;
+    [SerializeField]private List<AbilityBase> abilities;
+    private List<float> lastUseTimeList;
     int currentIndex=0;
+    float time;
+    private void Start()
+    {
+        lastUseTimeList = new List<float>();
+        for (int i = 0; i < abilities.Count; i++) {
+            lastUseTimeList.Add(0f);
+        }
+    }
     private void Update()
     {
+        time += Time.deltaTime;
         if (Keyboard.current.digit1Key.wasPressedThisFrame) { currentIndex = 0;}
         if (Keyboard.current.digit2Key.wasPressedThisFrame) { currentIndex = 1; }
         if (Keyboard.current.digit3Key.wasPressedThisFrame) { currentIndex = 2; }
@@ -27,13 +37,18 @@ public class AbilityController : MonoBehaviour
     }
     public void ActivateCurrentAbility()
     {
-
         if (currentIndex>=abilities.Count)
         {
             return;
         }
         var ability = abilities[currentIndex];
-        ability.Activate(gameObject);
+
+        if (time - lastUseTimeList[currentIndex] > ability.cooldown)
+        {
+            ability.Activate(gameObject);
+            lastUseTimeList[currentIndex] = time;
+        }
+
     }
 
 }

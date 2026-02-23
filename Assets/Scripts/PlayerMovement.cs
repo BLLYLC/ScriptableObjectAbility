@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         HandleMovement();
+        
     }
     public Vector2 GetMoveinput()
     {

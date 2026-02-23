@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: DashAbility
   m_EditorClassIdentifier: Assembly-CSharp::DashAbility
   abilityName: Dash
-  cooldown: 5
+  cooldown: 2
   dashSpeed: 300
