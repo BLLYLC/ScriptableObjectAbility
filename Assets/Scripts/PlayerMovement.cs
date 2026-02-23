@@ -16,6 +16,18 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        HandleMovement();
+    }
+    public Vector2 GetMoveinput()
+    {
+        return moveInput;
+    }
+    public Transform GetCameraTransform()
+    {
+        return cameraTransform;
+    }
+    private void HandleMovement()
+    {
         moveInput.x = 0; moveInput.y = 0;
         if (Keyboard.current.wKey.isPressed)
         {
@@ -35,7 +47,8 @@ public class PlayerMovement : MonoBehaviour
         }
         Vector3 move = cameraTransform.forward * moveInput.x + cameraTransform.right * moveInput.y;
         move.y = 0f;
-      
+        move.Normalize();
+
         transform.position += move * moveSpeed * Time.deltaTime;
     }
 }

@@ -133,6 +133,7 @@ GameObject:
   - component: {fileID: 286658421}
   - component: {fileID: 286658420}
   - component: {fileID: 286658425}
+  - component: {fileID: 286658426}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -277,6 +278,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
   moveSpeed: 10
   cameraTransform: {fileID: 330585546}
+--- !u!114 &286658426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 286658419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a395273f1c7e494e8cff37b4d65fc19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AbilityController
+  abilities:
+  - {fileID: 11400000, guid: 0fe9440d098207a4aabd05b4af5a7e24, type: 2}
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
