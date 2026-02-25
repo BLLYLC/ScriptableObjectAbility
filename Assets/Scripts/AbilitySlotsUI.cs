@@ -5,10 +5,12 @@ using UnityEngine.UI;
 public class AbilitySlotsUI : MonoBehaviour
 {
     [SerializeField]private List<GameObject> abilityIcons;
-    [SerializeField] private List<AbilityBase> abilities;
+    private List<AbilityBase> abilities;
+    [SerializeField] private GameObject selectorFrame;
     
-    void Start()
-    {
+    private void Start()
+    { 
+        abilities = AbilityController.instance.GetAbilityList();
         for(int i = 0; i < abilityIcons.Count; i++)
         {
             if (i < abilities.Count)
@@ -22,8 +24,12 @@ public class AbilitySlotsUI : MonoBehaviour
                 img.sprite = null;
             }
         }
-
+       
+        AbilityController.instance.OnNewSpellSelected += AbilityController_OnNewSpellSelected;
     }
 
-    
+    private void AbilityController_OnNewSpellSelected(int currentIndex)
+    {
+        selectorFrame.transform.position = abilityIcons[currentIndex].transform.position;
+    }
 }
