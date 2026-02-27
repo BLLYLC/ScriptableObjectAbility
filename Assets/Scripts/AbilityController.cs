@@ -8,7 +8,8 @@ public class AbilityController : MonoBehaviour
 {
     public static AbilityController instance { get; private set; }
 
-    public event Action<int> OnNewSpellSelected; 
+    public event Action<int> OnNewSpellSelected;
+    public event Action<int> OnAbilityUsed;
     [SerializeField]private List<AbilityBase> abilities;
     private List<float> lastUseTimeList;
     int currentIndex=0;
@@ -47,12 +48,13 @@ public class AbilityController : MonoBehaviour
         {
             return;
         }
-        var ability = abilities[currentIndex];
+        AbilityBase ability = abilities[currentIndex];
 
         if (time - lastUseTimeList[currentIndex] > ability.cooldown)
         {
             ability.Activate(gameObject);
             lastUseTimeList[currentIndex] = time;
+            OnAbilityUsed?.Invoke(currentIndex);
         }
 
     }
