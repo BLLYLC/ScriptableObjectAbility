@@ -35,6 +35,7 @@ public class AbilitySlotsUI : MonoBehaviour
             {
                 Image img = abilityIcons[i].GetComponent<Image>();
                 img.sprite = abilities[i].abilitySprite;
+                img.color = Color.white;
             }
             else
             {

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName ="DashAbility",menuName="AbilityBase/DashAbility")]
+[CreateAssetMenu(fileName ="DashAbility",menuName= "ScriptableObjects/AbilityBase/DashAbility")]
 public class DashAbility : AbilityBase
 {
     
