@@ -6,8 +6,8 @@ public class ShockwaveAbility : AbilityBase
 
     public override void Activate(GameObject owner)
     {
-        Vector3 shockwavePosition = owner.transform.position;
-        Collider[] hitColliders = Physics.OverlapSphere(shockwavePosition, 5f);
+        Vector3 shockwavePosition = owner.transform.position; 
+        Collider[] hitColliders = Physics.OverlapSphere(shockwavePosition, 10f);
         foreach (Collider hitCollider in hitColliders)
         {
             Rigidbody rb = hitCollider.GetComponent<Rigidbody>();
